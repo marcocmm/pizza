@@ -5,7 +5,9 @@
  */
 package com.example.accessingdatamysql;
 
+import java.util.List;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,7 +33,7 @@ public class Pizza {
     private Tamanho tamanho;
 
     @OneToMany
-    private Set<Extra> idExtras;
+    private List<Extra> extras;
 
     private Integer tempoTotal;
 
@@ -53,12 +55,12 @@ public class Pizza {
         this.tamanho = tamanho;
     }
 
-    public Set<Extra> getIdExtras() {
-        return idExtras;
+    public List<Extra> getIdExtras() {
+        return extras;
     }
 
-    public void setIdExtras(Set<Extra> idExtras) {
-        this.idExtras = idExtras;
+    public void setIdExtras(List<Extra> idExtras) {
+        this.extras = idExtras;
     }
 
     public Integer getId_pizza() {
@@ -83,6 +85,14 @@ public class Pizza {
 
     public void setValorTotal(Integer valorTotal) {
         this.valorTotal = valorTotal;
+    }
+
+    public void addValor(Integer valor) {
+        this.valorTotal += valor;
+    }
+
+    public void addTempo(Integer tempo) {
+        this.tempoTotal += tempo;
     }
 
 }

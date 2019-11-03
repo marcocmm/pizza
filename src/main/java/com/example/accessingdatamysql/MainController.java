@@ -80,21 +80,39 @@ public class MainController {
         Iterable<Sabor> sabores = saborRepository.findAll();
         Iterable<Extra> extras = extraRepository.findAll();
         Iterable<Tamanho> tamanhos = tamanhoRepository.findAll();
-     
-        for (Iterator iterator = (Iterator) sabores; iterator.hasNext();) {
+
+        pizza.setValorTotal(0);
+        pizza.setTempoTotal(0);
+
+        for (Iterator iterator = sabores.iterator(); iterator.hasNext();) {
             Sabor sabor = (Sabor) iterator.next();
             if (sabor.getId_sabor() == pizza.getSabor().getId_sabor()) {
-                
+                pizza.addTempo(sabor.getTempo());
             }
         }
-
+        for (Iterator iterator = tamanhos.iterator(); iterator.hasNext();) {
+            Tamanho tamanho = (Tamanho) iterator.next();
+            if (tamanho.getId_tamanho() == pizza.getTamanho().getId_tamanho()) {
+                pizza.addTempo(tamanho.getTempo());
+                pizza.addValor(tamanho.getValor());
+            }
+        }
+        for (Iterator iterator = extras.iterator(); iterator.hasNext();) {
+            Extra extra = (Extra) iterator.next();
+            pizza.getIdExtras().contains(extra.getId_extra());
+            pizza.addTempo(extra.getTempo());
+            pizza.addValor(extra.getValor());
+        }
         return pizza;
     }
 
     @PostMapping("/gravarPizza")
     Pizza gravarPizza(@RequestBody Pizza pizza) {
+        System.out.println("GRAVANDO PIZZA!");
         Pizza p = new Pizza();
         if (validaPizza(pizza)) {
+            pizza.setId_pizza(null);
+            pizza.setIdExtras(null);
             p = pizzaRepository.save(pizza);
         }
         return p;
