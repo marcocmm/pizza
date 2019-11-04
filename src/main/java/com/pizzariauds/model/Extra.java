@@ -1,10 +1,12 @@
 package com.pizzariauds.model;
 
 import java.io.Serializable;
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -22,6 +24,9 @@ public class Extra implements Serializable {
     private Integer tempo;
 
     private Integer valor;
+    
+    @ManyToMany(mappedBy = "extras")
+    private Set<Pizza> pizzas;
 
     public Integer getId_extra() {
         return id_extra;

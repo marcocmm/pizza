@@ -9,7 +9,9 @@ import com.pizzariauds.repository.SaborRepository;
 import com.pizzariauds.repository.TamanhoRepository;
 import com.pizzariauds.model.Tamanho;
 import com.pizzariauds.validacoes.PizzaValidacoes;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -62,6 +64,23 @@ public class MainController {
 
     @GetMapping("/calcularPizza")
     Pizza calculaPizza(@RequestBody Pizza pizza) {
+        return calcularPizza(pizza);
+    }
+
+    @PostMapping("/gravarPizza")
+    Pizza gravarPizza(@RequestBody Pizza pizza) {
+        Pizza p = new Pizza();
+        pizza = calculaPizza(pizza);
+        if (PizzaValidacoes.valida(pizza)) {
+            pizza.setId_pizza(null);
+//            pizza.setIdExtras(null);
+            p = pizzaRepository.save(pizza);
+        }
+        return p;
+    }
+//Calcula Tempo e Valor da Pizza pelos IDS de tamanho, tempo e extras
+
+    public Pizza calcularPizza(Pizza pizza) {
         Iterable<Sabor> sabores = saborRepository.findAll();
         Iterable<Extra> extras = extraRepository.findAll();
         Iterable<Tamanho> tamanhos = tamanhoRepository.findAll();
@@ -73,6 +92,7 @@ public class MainController {
             Sabor sabor = (Sabor) iterator.next();
             if (sabor.getId_sabor() == pizza.getSabor().getId_sabor()) {
                 pizza.addTempo(sabor.getTempo());
+                pizza.setSabor(sabor);
             }
         }
         for (Iterator iterator = tamanhos.iterator(); iterator.hasNext();) {
@@ -80,26 +100,20 @@ public class MainController {
             if (tamanho.getId_tamanho() == pizza.getTamanho().getId_tamanho()) {
                 pizza.addTempo(tamanho.getTempo());
                 pizza.addValor(tamanho.getValor());
+                pizza.setTamanho(tamanho);
             }
         }
+        Set<Extra> novosExtras = new HashSet<>();
         for (Iterator iterator = extras.iterator(); iterator.hasNext();) {
             Extra extra = (Extra) iterator.next();
-            pizza.getExtras().contains(extra.getId_extra());
-            pizza.addTempo(extra.getTempo());
-            pizza.addValor(extra.getValor());
+            if (!novosExtras.contains(extra.getId_extra())) {
+                pizza.getExtras().contains(extra.getId_extra());
+                pizza.addTempo(extra.getTempo());
+                pizza.addValor(extra.getValor());
+                novosExtras.add(extra);
+            }
         }
+        pizza.setExtras(novosExtras);
         return pizza;
     }
-
-    @PostMapping("/gravarPizza")
-    Pizza gravarPizza(@RequestBody Pizza pizza) {
-        Pizza p = new Pizza();
-        if (PizzaValidacoes.valida(pizza)) {
-            pizza.setId_pizza(null);
-//            pizza.setIdExtras(null);
-            p = pizzaRepository.save(pizza);
-        }
-        return p;
-    }
-
 }
