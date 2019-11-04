@@ -1,0 +1,300 @@
+{
+	"info": {
+		"_postman_id": "7fd51cd5-cba8-488b-b669-77dd71520c15",
+		"name": "Pizza",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AllExtras",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/uds/allExtras",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"uds",
+						"allExtras"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "gravarPizza",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"sabor\": {\n        \"id_sabor\": 1,\n        \"descricao\": \"Calabresa\",\n        \"tempo\": 0\n    },\n    \"tamanho\": {\n        \"id_tamanho\": 2,\n        \"descricao\": \"Pequena\",\n        \"tempo\": 15,\n        \"valor\": 20\n    },\n    \"tempoTotal\": 20,\n    \"valorTotal\": 28,\n    \"extras\": [\n        {\n            \"id_extra\": 0,\n            \"descricao\": \"Extra Bacon\",\n            \"tempo\": 0,\n            \"valor\": 3\n        },\n        {\n            \"id_extra\": 2,\n            \"descricao\": \"Borda Extra\",\n            \"tempo\": 5,\n            \"valor\": 15\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/uds/gravarPizza",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"uds",
+						"gravarPizza"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "calculaPizza",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"id_pizza\": 0,\n        \"sabor\": {\n            \"id_sabor\": 0,\n            \"descricao\": \"Calabresa\",\n            \"tempo\": 0\n        },\n        \"tamanho\": {\n            \"id_tamanho\": 1,\n            \"descricao\": \"Pequena\",\n            \"tempo\": 15,\n            \"valor\": 20\n        },\n        \"extras\": [\n            {\n                \"id_extra\": 0,\n                \"descricao\": \"Extra Bacon\",\n                \"tempo\": 0,\n                \"valor\": 3\n            },\n            {\n                \"id_extra\": 2,\n                \"descricao\": \"Borda Extra\",\n                \"tempo\": 5,\n                \"valor\": 15\n            }\n        ],\n        \"tempoTotal\": 0,\n        \"valorTotal\": 0\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/uds/calcularPizza",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"uds",
+						"calcularPizza"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AllPizzas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/uds/allPizzas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"uds",
+						"allPizzas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "allTamanhos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/uds/allTamanhos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"uds",
+						"allTamanhos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "gravarSabores",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"id_sabor\": 0,\n        \"descricao\": \"Calabresa\",\n        \"tempo\": 0\n    },\n    {\n        \"id_sabor\": 1,\n        \"descricao\": \"Marguerita\",\n        \"tempo\": 0\n    },\n    {\n        \"id_sabor\": 2,\n        \"descricao\": \"Portuguesa\",\n        \"tempo\": 5\n    }\n]"
+				},
+				"url": {
+					"raw": "http://localhost:8080/uds/gravarSabores",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"uds",
+						"gravarSabores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "gravarTamanhos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"id_tamanho\": 0,\n        \"descricao\": \"Pequena\",\n        \"tempo\": 15,\n        \"valor\": 20\n    },\n    {\n        \"id_tamanho\": 1,\n        \"descricao\": \"Media\",\n        \"tempo\": 20,\n        \"valor\": 30\n    },\n    {\n        \"id_tamanho\": 2,\n        \"descricao\": \"Grande\",\n        \"tempo\": 25,\n        \"valor\": 40\n    }\n]"
+				},
+				"url": {
+					"raw": "http://localhost:8080/uds/gravarTamanhos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"uds",
+						"gravarTamanhos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "gravarExtras",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"id_extra\": 0,\n        \"descricao\": \"Extra Bacon\",\n        \"tempo\": 0,\n        \"valor\": 3\n    },\n    {\n        \"id_extra\": 1,\n        \"descricao\": \"Sem Cebola\",\n        \"tempo\": 0,\n        \"valor\": 0\n    },\n    {\n        \"id_extra\": 2,\n        \"descricao\": \"Borda Recheada\",\n        \"tempo\": 5,\n        \"valor\": 5\n    }\n]"
+				},
+				"url": {
+					"raw": "http://localhost:8080/uds/gravarExtras",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"uds",
+						"gravarExtras"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AllSabores",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/uds/allSabores",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"uds",
+						"allSabores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "calcularPizza",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\"id_pizza\":0,\"idSabor\":0,\"idTamanho\":0,\"idExtras\":[{\"id_extra\":0,\"descricao\":\"Extra Bacon\",\"tempo\":0,\"valor\":3}],\"tempoTotal\":0,\"valorTotal\":0}]"
+				},
+				"url": {
+					"raw": "http://localhost:8080/demo/calcularPizza",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"demo",
+						"calcularPizza"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
