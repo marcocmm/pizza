@@ -41,6 +41,11 @@ public class MainController {
         return tamanhoRepository.findAll();
     }
 
+    @PostMapping("/gravarTamanhos")
+    Iterable<Tamanho> gravarTamanhos(@RequestBody Iterable<Tamanho> tamanhos) {
+        return tamanhoRepository.saveAll(tamanhos);
+    }
+
     @GetMapping(path = "/allSabores")
     public @ResponseBody
     Iterable<Sabor> getAllSabores() {
@@ -48,11 +53,21 @@ public class MainController {
         return saborRepository.findAll();
     }
 
+    @PostMapping("/gravarSabores")
+    Iterable<Sabor> gravarSabores(@RequestBody Iterable<Sabor> sabores) {
+        return saborRepository.saveAll(sabores);
+    }
+
     @GetMapping(path = "/allExtras")
     public @ResponseBody
     Iterable<Extra> getAllExtras() {
         // This returns a JSON or XML with the users
         return extraRepository.findAll();
+    }
+
+    @PostMapping("/gravarExtras")
+    Iterable<Extra> gravarExtras(@RequestBody Iterable<Extra> extras) {
+        return extraRepository.saveAll(extras);
     }
 
     @GetMapping(path = "/allPizzas")
@@ -105,12 +120,15 @@ public class MainController {
         }
         Set<Extra> novosExtras = new HashSet<>();
         for (Iterator iterator = extras.iterator(); iterator.hasNext();) {
-            Extra extra = (Extra) iterator.next();
-            if (!novosExtras.contains(extra.getId_extra())) {
-                pizza.getExtras().contains(extra.getId_extra());
-                pizza.addTempo(extra.getTempo());
-                pizza.addValor(extra.getValor());
-                novosExtras.add(extra);
+            Extra extraLista = (Extra) iterator.next();
+            for (Iterator<Extra> iteratorPizza = pizza.getExtras().iterator(); iteratorPizza.hasNext();) {
+                Extra extraPizza = iteratorPizza.next();
+                if (extraPizza.getId_extra() == extraLista.getId_extra() && !novosExtras.contains(extraLista)) {
+                    pizza.addTempo(extraLista.getTempo());
+                    pizza.addValor(extraLista.getValor());
+                    novosExtras.add(extraLista);
+
+                }
             }
         }
         pizza.setExtras(novosExtras);
