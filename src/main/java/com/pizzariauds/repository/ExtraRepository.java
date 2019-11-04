@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example.accessingdatamysql;
+package com.pizzariauds.repository;
 
 /**
  *
  * @author root
  */
+import com.pizzariauds.model.Extra;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

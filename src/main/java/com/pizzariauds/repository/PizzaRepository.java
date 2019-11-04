@@ -1,4 +1,4 @@
-package com.example.accessingdatamysql;
+package com.pizzariauds.repository;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -7,7 +7,8 @@ package com.example.accessingdatamysql;
  */
 
 
-import com.example.accessingdatamysql.Pizza;
+import com.pizzariauds.model.Pizza;
+import com.pizzariauds.model.Pizza;
 import org.springframework.data.repository.CrudRepository;
 
 /**

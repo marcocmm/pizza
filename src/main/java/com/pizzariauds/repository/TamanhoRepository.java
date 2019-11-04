@@ -1,5 +1,6 @@
-package com.example.accessingdatamysql;
+package com.pizzariauds.repository;
 
+import com.pizzariauds.model.Tamanho;
 import org.springframework.data.repository.CrudRepository;
 
 

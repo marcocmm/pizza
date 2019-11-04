@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example.accessingdatamysql;
+package com.pizzariauds.repository;
 
+import com.pizzariauds.model.Sabor;
 import org.springframework.data.repository.CrudRepository;
 
 /**

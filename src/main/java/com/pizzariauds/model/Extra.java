@@ -1,28 +1,34 @@
-package com.example.accessingdatamysql;
+package com.pizzariauds.model;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ *
+ * @author root
+ */
 @Entity // This tells Hibernate to make a table out of this class
-public class Tamanho {
+public class Extra implements Serializable  {
+
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer id_tamanho;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id_extra;
 
     private String descricao;
 
     private Integer tempo;
-    
+
     private Integer valor;
 
-    public Integer getId_tamanho() {
-        return id_tamanho;
+    public Integer getId_extra() {
+        return id_extra;
     }
 
-    public void setId_tamanho(Integer id_tamanho) {
-        this.id_tamanho = id_tamanho;
+    public void setId_extra(Integer id_extra) {
+        this.id_extra = id_extra;
     }
 
     public String getDescricao() {
@@ -48,7 +54,5 @@ public class Tamanho {
     public void setValor(Integer valor) {
         this.valor = valor;
     }
-
-
 
 }

@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example.accessingdatamysql;
+package com.pizzariauds.model;
 
+import com.pizzariauds.model.Sabor;
+import com.pizzariauds.model.Tamanho;
 import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
