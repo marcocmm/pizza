@@ -11,7 +11,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>accessing-data-mysql</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>accessing-data-mysql</name>
+	<name>pizzariauds</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

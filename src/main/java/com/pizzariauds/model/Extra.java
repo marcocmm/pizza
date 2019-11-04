@@ -11,7 +11,7 @@ import javax.persistence.Id;
  * @author root
  */
 @Entity // This tells Hibernate to make a table out of this class
-public class Extra implements Serializable  {
+public class Extra implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

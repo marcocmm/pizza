@@ -84,7 +84,7 @@ public class MainController {
         }
         for (Iterator iterator = extras.iterator(); iterator.hasNext();) {
             Extra extra = (Extra) iterator.next();
-            pizza.getIdExtras().contains(extra.getId_extra());
+            pizza.getExtras().contains(extra.getId_extra());
             pizza.addTempo(extra.getTempo());
             pizza.addValor(extra.getValor());
         }
@@ -96,7 +96,7 @@ public class MainController {
         Pizza p = new Pizza();
         if (PizzaValidacoes.valida(pizza)) {
             pizza.setId_pizza(null);
-            pizza.setIdExtras(null);
+//            pizza.setIdExtras(null);
             p = pizzaRepository.save(pizza);
         }
         return p;

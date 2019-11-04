@@ -5,16 +5,13 @@
  */
 package com.pizzariauds.model;
 
-import com.pizzariauds.model.Sabor;
-import com.pizzariauds.model.Tamanho;
 import java.util.List;
 import java.util.Set;
-import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
@@ -34,8 +31,8 @@ public class Pizza {
     @OneToOne
     private Tamanho tamanho;
 
-    @OneToMany
-    private List<Extra> extras;
+    @ElementCollection(targetClass = Integer.class)
+    private List<Integer> extras;
 
     private Integer tempoTotal;
 
@@ -57,12 +54,12 @@ public class Pizza {
         this.tamanho = tamanho;
     }
 
-    public List<Extra> getIdExtras() {
+    public List<Integer> getExtras() {
         return extras;
     }
 
-    public void setIdExtras(List<Extra> idExtras) {
-        this.extras = idExtras;
+    public void setExtras(List<Integer> extras) {
+        this.extras = extras;
     }
 
     public Integer getId_pizza() {
